@@ -1,0 +1,2 @@
+1. instal db konektor --go get github.com/lib/pq
+2. 
