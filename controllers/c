@@ -1,0 +1,57 @@
+// // project/controllers/photo_controllers.go
+
+// package controllers
+
+// import (
+//     // "database/sql"
+//     "encoding/json"
+// 	"fmt"
+//     "net/http"
+//     "task-5-pbi-btpns-haryomuktiwibowo/database"
+//     "task-5-pbi-btpns-haryomuktiwibowo/models"
+// )
+
+// AddPhoto adalah fungsi untuk menangani endpoint POST /photos
+// func AddPhoto(w http.ResponseWriter, r *http.Request) {
+//     if r.Method != http.MethodPost {
+//         http.NotFound(w, r)
+//         return
+//     }
+
+//     // Mendekode payload JSON
+//     var photo models.Photo
+// 	fmt.Println(photo)
+//     if err := json.NewDecoder(r.Body).Decode(&photo); err != nil {
+//         http.Error(w, "Failed to decode request body", http.StatusBadRequest)
+//         return
+//     }
+
+//     // Insert foto baru ke database
+// db, err := database.ConnectDB()
+// if err != nil {
+//     http.Error(w, "Failed to connect to the database", http.StatusInternalServerError)
+//     return
+// }
+// defer db.Close()
+
+// query := "INSERT INTO \"Photo\" (Title, Caption, PhotoUrl, UserID) VALUES ($1, $2, $3, $4)"
+// result, err := db.Exec(query, photo.Title, photo.Caption, photo.PhotoUrl, photo.UserID)
+// if err != nil {
+//     http.Error(w, "Failed to insert photo into the database: "+err.Error(), http.StatusInternalServerError)
+//     return
+// }
+
+// rowsAffected, err := result.RowsAffected()
+// if err != nil {
+//     http.Error(w, "Failed to get number of affected rows: "+err.Error(), http.StatusInternalServerError)
+//     return
+// }
+
+// if rowsAffected == 0 {
+//     http.Error(w, "No rows affected while inserting photo", http.StatusInternalServerError)
+//     return
+// }
+
+// // Kirim respons berhasil
+// w.WriteHeader(http.StatusCreated)
+// }
