@@ -18,5 +18,13 @@ func InitRouter() {
 	http.HandleFunc("/users/", middlewares.Authenticate(controllers.DeleteUser))
 
         // Mengatur route untuk endpoint POST /photos
-        http.HandleFunc("/photos", middlewares.Authenticate(controllers.AddPhoto))
-    }
+        http.HandleFunc("/photos/", middlewares.Authenticate(controllers.AddPhoto))
+   
+//#######################################################
+
+	  // Mengatur route untuk endpoint DELETE /photos/:photoId
+	  http.HandleFunc("/deletephotos/", middlewares.Authenticate(controllers.DeletePhoto))
+  
+	   // Menambahkan route untuk endpoint PUT /photos/:photoId
+	   http.HandleFunc("/putphotos/", controllers.UpdatePhoto)
+	}

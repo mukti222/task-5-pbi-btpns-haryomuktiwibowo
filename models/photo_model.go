@@ -9,6 +9,6 @@ type Photo struct {
     ID        int            `json:"id"`
     Title     string         `json:"title"`
     Caption   string         `json:"caption"`
-    PhotoFile *multipart.File `json:"-"`
+    PhotoUrl *multipart.File `json:"-"`
     UserID    int            `json:"userID"`
 }
